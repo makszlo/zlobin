@@ -13,13 +13,13 @@ import java.io.PrintStream;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class CalculateTest{		
+public class CalculateTest {		
 	@Test
-	public void testMethod(){
-		String input="Max";
-		String expect="Echo, echo, echo : Max";
+	public void testMethod() {
+		String input = "Max";
+		String expect = "Echo, echo, echo : Max";
 		Calculate calc = new Calculate();
-		String result=calc.echo(input);
+		String result = calc.echo(input);
 		assertThat(result, is(expect));
 	}
 }
