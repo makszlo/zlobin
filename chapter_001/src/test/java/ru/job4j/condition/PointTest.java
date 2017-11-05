@@ -16,11 +16,6 @@ public class PointTest {
         assertThat(true, is(a.is(2, -28)));
     }
     @Test
-    public void lineDontExist() {
-        Point a = new Point(0, 0);
-        assertThat(false, is(a.is(0, 0)));
-    }
-    @Test
     public void pointDontBelongToLine() {
         Point a = new Point(-23, 24);
         assertThat(false, is(a.is(34, 23)));
