@@ -17,7 +17,7 @@ public class ArrayDuplicate {
         int uniqueCounter = array.length;
         int i = 1;
         String tmp;
-        while ((i != uniqueCounter) || (i == 5)) {
+        while (i != uniqueCounter) {
             for (int j = 0; j < i; j++) {
                 if (array[i].equals(array[j])) {
                     uniqueCounter--;
