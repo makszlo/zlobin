@@ -14,20 +14,23 @@ public class ArrayDuplicate {
      * @return - массив String без дубликатов.
      */
     public String[] remove(String[] array) {
-        int i = 0;
+        int uniqueCounter = array.length;
+        int i = 1;
         String tmp;
-        while (i != array.length - 1) {
-            for (int j = 0; j < array.length; j++) {
-                if (array[i].equals(array[j]) && i != j) {
-                    array[j] = array[array.length - 1];
-                    array = Arrays.copyOf(array, array.length - 1);
+        while ((i != uniqueCounter) || (i == 5)) {
+            for (int j = 0; j < i; j++) {
+                if (array[i].equals(array[j])) {
+                    uniqueCounter--;
+                    tmp = array[uniqueCounter];
+                    array[uniqueCounter] = array[i];
+                    array[i] = tmp;
                     break;
-                }
-                if (j == array.length - 1) {
+                } else if (j == i - 1) {
                     i++;
+                    break;
                 }
             }
         }
-        return  array;
+        return Arrays.copyOf(array, uniqueCounter);
     }
 }
