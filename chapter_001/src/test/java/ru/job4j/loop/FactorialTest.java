@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
  */
 public class FactorialTest {
     /**
-     * Факториал нуля
+     * Тест на рассчёт факториала нуля
      */
     @Test
     public void factorialOfZero() {
@@ -23,7 +23,7 @@ public class FactorialTest {
     }
 
     /**
-     * Факториал пяти
+     * Тест на рассчёт факториала пяти
      */
     @Test
     public void factorialOfFive() {

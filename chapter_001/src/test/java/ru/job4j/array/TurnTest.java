@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
  */
 public class TurnTest {
     /**
-     * Прочерка для массива с нечетным количеством элементов
+     * Проверка для поворота массива с нечетным количеством элементов задом наперёд
      */
     @Test
     public void oddArray() {
@@ -22,7 +22,7 @@ public class TurnTest {
         assertThat(result, is(expected));
     }
     /**
-     * Прочерка для массива с четным количеством элементов
+     * Проверка для поворота массива с четным количеством элементов задом наперёд
      */
     @Test
     public void evenArray() {

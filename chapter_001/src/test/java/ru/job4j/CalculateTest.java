@@ -13,7 +13,10 @@ import java.io.PrintStream;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class CalculateTest {		
+public class CalculateTest {
+	/**
+	 * Тест для проверки метода echo
+	 */
 	@Test
 	public void testMethod() {
 		String input = "Max";

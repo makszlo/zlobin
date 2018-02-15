@@ -1,24 +1,30 @@
 package ru.job4j;
 
 public class ContainWord {
+    /**
+     * Метод для проверки содержится ли слово в строке текста
+     * @param origin - строка текста
+     * @param sub - проверяемое слово
+     * @return - содержит / не содержит
+     */
     public boolean contains(String origin, String sub) {
-        int coincidenceCounter = 0;
+        int counter = 0;
         char[] originCh = origin.toCharArray();
         char[] subCh = sub.toCharArray();
-        int subLength = sub.length();
-        for (int i = 0; i <= origin.length() - subLength; i++) {
-            if ((originCh[i] == subCh[0]) && (coincidenceCounter != subLength)) {
-                coincidenceCounter = 1;
-                for (int j = i + 1; j < i + subLength; j++) {
+        int length = sub.length();
+        for (int i = 0; i <= origin.length() - length; i++) {
+            if ((originCh[i] == subCh[0]) && (counter != length)) {
+                counter = 1;
+                for (int j = i + 1; j < i + length; j++) {
                     if (originCh[j] == subCh[j - i]) {
-                        coincidenceCounter++;
+                        counter++;
                     } else {
                         break;
                     }
                 }
             }
         }
-        return coincidenceCounter == subLength;
+        return counter == length;
     }
 }
 

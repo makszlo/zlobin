@@ -10,19 +10,19 @@ import java.util.Arrays;
 public class ArrayDuplicate {
     /**
      * Метод удаляет дубликаты из массива String.
-     * @param array - массив String с дубликатами.
+     * @param array - массив String, из которого будут удаляться дубликаты.
      * @return - массив String без дубликатов.
      */
     public String[] remove(String[] array) {
-        int uniqueCounter = array.length;
+        int counter = array.length;
         int i = 1;
         String tmp;
-        while (i != uniqueCounter) {
+        while (i != counter) {
             for (int j = 0; j < i; j++) {
                 if (array[i].equals(array[j])) {
-                    uniqueCounter--;
-                    tmp = array[uniqueCounter];
-                    array[uniqueCounter] = array[i];
+                    counter--;
+                    tmp = array[counter];
+                    array[counter] = array[i];
                     array[i] = tmp;
                     break;
                 } else if (j == i - 1) {
@@ -31,6 +31,6 @@ public class ArrayDuplicate {
                 }
             }
         }
-        return Arrays.copyOf(array, uniqueCounter);
+        return Arrays.copyOf(array, counter);
     }
 }

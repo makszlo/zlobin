@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
  */
 public class MaxTest {
     /**
-     * Positive numbers test
+     * Тест на сравнение двух положительных цифр
      */
     @Test
     public void positive() {
@@ -22,7 +22,7 @@ public class MaxTest {
     }
 
     /**
-     * Negative numbers test
+     * Тест на сравнение двух отрицательных цифр
      */
     @Test
     public void negative() {
@@ -32,7 +32,7 @@ public class MaxTest {
     }
 
     /**
-     * Positive and negative numbers test
+     * Тест на сравнение положительного и отрицательного цисла
      */
     @Test
     public void positiveAndNegative() {
@@ -41,7 +41,7 @@ public class MaxTest {
         assertThat(result, is(32));
     }
     /**
-     * Three numbers test
+     * Тест на поиск максимального среди трёх числе
      */
     public void threeNum() {
         Max testMax = new Max();

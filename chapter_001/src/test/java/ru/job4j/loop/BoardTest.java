@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
  */
 public class BoardTest {
     /**
-     * Тест для доски 3х3
+     * Тест заполнения Х-ами для доски 3х3
      */
     @Test
     public void boardThreeXThree() {
@@ -22,7 +22,7 @@ public class BoardTest {
         assertThat(result, is(expected));
     }
     /**
-     * Тест для доски 5х4
+     * Тест заполнения Х-ами для доски 5х4
      */
     @Test
     public void boardFiveXFour() {

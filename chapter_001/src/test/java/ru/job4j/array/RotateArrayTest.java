@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
  */
 public class RotateArrayTest {
     /**
-     * Тест для массива 3 на 3
+     * Тест для поворота массива 3 на 3 на 90 градусов
      */
     @Test
     public void threeByThreeArray() {
@@ -21,7 +21,7 @@ public class RotateArrayTest {
         assertThat(result, is(expected));
     }
     /**
-     * Тест для массива 2 на 2
+     * Тест для поворота массива 2 на 2 на 90 градусов
      */
     @Test
     public void twoByTwoArray() {

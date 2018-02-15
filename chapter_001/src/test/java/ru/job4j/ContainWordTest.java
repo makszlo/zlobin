@@ -5,6 +5,9 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 public class ContainWordTest {
+    /**
+     * Тесты для проверки метода поиска слова в строке текста.
+     */
     @Test
     public void helloTest() {
         ContainWord cw = new ContainWord();

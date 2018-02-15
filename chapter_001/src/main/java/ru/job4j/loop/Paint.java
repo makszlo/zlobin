@@ -13,14 +13,14 @@ public class Paint {
      */
     public String piramid(int h) {
         int weight = 1 + (h - 1) * 2;
-        int centPos = (weight - 1) / 2;
+        int centre = (weight - 1) / 2;
         String newLine = System.getProperty("line.separator");
         StringBuilder tmp = new StringBuilder();
         for (int i = 1; i <= h; i++) {
-            int posStart = centPos - (i - 1);
-            int posEnd = centPos + (i - 1);
+            int start = centre - (i - 1);
+            int end = centre + (i - 1);
             for (int j = 0; j < weight; j++) {
-                if (j >= posStart && j <= posEnd) {
+                if (j >= start && j <= end) {
                     tmp.append("^");
                 } else {
                     tmp.append(" ");

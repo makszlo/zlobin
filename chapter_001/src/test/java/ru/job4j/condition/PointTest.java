@@ -10,6 +10,9 @@ import static org.junit.Assert.assertThat;
  * @version 0.1
  */
 public class PointTest {
+    /**
+     * Тесты для проверки метода проверки принадлежности точки прямой
+     */
     @Test
     public void pointBelongToLine() {
         Point a = new Point(21, 14);

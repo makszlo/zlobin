@@ -7,14 +7,14 @@ package ru.job4j.array;
  */
 public class BubbleSort {
     /**
-     * Метод для сортировки методом пузырька
+     * Метод для сортировки массива int методом пузырька.
      * @param array - неотсортированный массив int
      * @return - отсортированный массив int
      */
     public int[] sort(int[] array) {
-        int tmpLenght = array.length;
-        for (int i = 0; i < tmpLenght; i++) {
-            for (int j = 0; j < tmpLenght - 1 - i; j++) {
+        int length = array.length;
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length - 1 - i; j++) {
                 if (array[j] > array[j + 1]) {
                     int tmp = array[j];
                     array[j] = array[j + 1];

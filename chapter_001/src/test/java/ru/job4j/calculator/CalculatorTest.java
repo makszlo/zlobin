@@ -6,6 +6,9 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class CalculatorTest {
+    /**
+     * Тесты для проверки методов класса Cslculstor
+     */
     @Test
     public void addTest() {
         Calculator calc = new Calculator();

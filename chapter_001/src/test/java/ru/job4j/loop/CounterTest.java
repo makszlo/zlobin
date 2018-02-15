@@ -12,7 +12,7 @@ import static org.junit.Assert.assertThat;
  */
 public class CounterTest {
     /**
-     * Сумма чётных чисел от 0 до 10
+     * Тест на рассчёт сумма чётных чисел от 0 до 10
      */
     @Test
     public void sumFromZeroToTen() {

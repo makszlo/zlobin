@@ -13,6 +13,9 @@ package ru.job4j;
  * @version 0.1
  */
 public class CombineTwoSortedInOneSortedTest {
+    /**
+     * Тесты для метода объединения двух сортированных массивов в один
+     */
     @Test
     public void combineArraysTest1() {
         CombineTwoSortedInOneSorted test = new CombineTwoSortedInOneSorted();

@@ -7,18 +7,18 @@ package ru.job4j.array;
  */
 public class RotateArray {
     /**
-     * Поворачивает массив на 90 градусов по часовой
+     * Поворачивает массив int на 90 градусов по часовой.
      * @param array - неповёрнутый квадратный массив
      * @return - повёрнутый массив
      */
     public int[][] rotate(int[][] array) {
-        int indexOfLastElement = array.length - 1;
-        for (int i = 0; i < indexOfLastElement; i++) {
+        int index = array.length - 1;
+        for (int i = 0; i < index; i++) {
             int tmp = array[0][i];
-            array[0][i] = array[indexOfLastElement - i][0];
-            array[indexOfLastElement - i][0] = array[indexOfLastElement][indexOfLastElement - i];
-            array[indexOfLastElement][indexOfLastElement - i] = array[i][indexOfLastElement];
-            array[i][indexOfLastElement] = tmp;
+            array[0][i] = array[index - i][0];
+            array[index - i][0] = array[index][index - i];
+            array[index][index - i] = array[i][index];
+            array[i][index] = tmp;
         }
         return array;
     }

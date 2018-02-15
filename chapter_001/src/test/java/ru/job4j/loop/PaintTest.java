@@ -11,7 +11,7 @@ import static org.junit.Assert.assertThat;
  */
 public class PaintTest {
     /**
-     * Тест для пирамиды высотой 2 строки
+     * Тест для построения пирамиды высотой 2 строки
      */
     @Test
     public void heightTwo() {
@@ -22,7 +22,7 @@ public class PaintTest {
         assertThat(result, is(expected));
     }
     /**
-     * Тест для пирамиды высотой 3 строки
+     * Тест для построения пирамиды высотой 3 строки
      */
     @Test
     public void heightThree() {

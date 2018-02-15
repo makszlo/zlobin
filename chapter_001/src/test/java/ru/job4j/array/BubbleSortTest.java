@@ -10,6 +10,9 @@ import static org.junit.Assert.assertThat;
  * @version 0.1
  */
 public class BubbleSortTest {
+    /**
+     * Тест для сортировки методом пузырька
+     */
     @Test
     public void oddArray() {
         BubbleSort bbblSort = new BubbleSort();
