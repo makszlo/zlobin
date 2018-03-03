@@ -7,6 +7,19 @@ public class Man {
     public String name;
 
     /**
+     * Конструктор по умолчанию
+     */
+    public Man() {
+    }
+    /**
+     * Конструктор для создания объекта класса Man
+     * @param name - имя человека
+     */
+    public Man(String name) {
+        this.name = name;
+    }
+
+    /**
      * Метод для получения имени человека
      * @return - имя человека
      */

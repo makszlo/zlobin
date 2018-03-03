@@ -5,6 +5,11 @@ package ru.job4j.profession;
  */
 public class Diagnose {
     public String name;
+
+    /**
+     * Конструктор для создания объекта Diagnose
+     * @param name - название болезни
+     */
     public Diagnose(String name) {
         this.name = name;
     }
