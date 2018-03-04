@@ -9,6 +9,8 @@ public class Profession extends Man {
      * Конструктор по умолчанию
      */
     public Profession() {
+        this.name = null;
+        this.name = null;
     }
     /**
      * Конструктор для создания объекта класса Profession

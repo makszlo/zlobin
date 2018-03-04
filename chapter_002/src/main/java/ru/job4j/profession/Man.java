@@ -10,6 +10,7 @@ public class Man {
      * Конструктор по умолчанию
      */
     public Man() {
+        this.name = null;
     }
     /**
      * Конструктор для создания объекта класса Man
