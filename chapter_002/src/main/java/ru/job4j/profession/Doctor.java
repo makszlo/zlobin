@@ -9,8 +9,7 @@ public class Doctor extends Profession {
      * @param name - имя доктора
      */
     public Doctor(String name) {
-        this.name = name;
-        this.profession = "Доктор";
+        super(name, "Доктор");
     }
 
     /**
@@ -19,8 +18,7 @@ public class Doctor extends Profession {
      * @param profession - профессия
      */
     public Doctor(String name, String profession) {
-        this.name = name;
-        this.profession = profession;
+        super(name, profession);
     }
 
     /**

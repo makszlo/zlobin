@@ -6,11 +6,9 @@ public class Profession extends Man {
     public String profession;
 
     /**
-     * Конструктор по умолчанию
+     * Дефолтный конструктор
      */
     public Profession() {
-        this.name = null;
-        this.name = null;
     }
     /**
      * Конструктор для создания объекта класса Profession
@@ -18,8 +16,8 @@ public class Profession extends Man {
      * @param profession - профессия
      */
     public Profession(String name, String profession) {
-        this.name = name;
-        this.profession = name;
+        super(name);
+        this.profession = profession;
     }
     /**
      * Метод для получения названия профессии

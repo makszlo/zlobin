@@ -7,10 +7,9 @@ public class Man {
     public String name;
 
     /**
-     * Конструктор по умолчанию
+     * Дефолтный конструктор
      */
     public Man() {
-        this.name = null;
     }
     /**
      * Конструктор для создания объекта класса Man

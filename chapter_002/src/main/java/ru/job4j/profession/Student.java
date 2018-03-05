@@ -9,6 +9,6 @@ public class Student extends Man {
      * @param name - имя студента
      */
     public Student(String name) {
-        this.name = name;
+        super(name);
     }
 }

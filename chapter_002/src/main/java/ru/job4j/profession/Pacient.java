@@ -11,6 +11,6 @@ public class Pacient extends Man {
      * @param name - имя пациента
      */
     public Pacient(String name) {
-        this.name = name;
+        super(name);
     }
 }
