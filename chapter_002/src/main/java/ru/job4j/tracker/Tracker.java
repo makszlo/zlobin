@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.util.Arrays;
+import java.util.Optional;
 import java.util.Random;
 
 public class Tracker {
@@ -37,7 +38,7 @@ public class Tracker {
         return Arrays.copyOf(items, position);
     }
 
-    public Item[] findByName(String key) {
+    public Optional<Item[]> findByName(String key) {
         Item[] found = new Item[position];
         int pos = 0;
         for (Item item : this.getAll()) {
@@ -45,16 +46,20 @@ public class Tracker {
                 found[pos++] = item;
             }
         }
-        return Arrays.copyOf(found, pos);
+        if (pos == 0) {
+            return Optional.empty();
+        } else {
+            return Optional.of(Arrays.copyOf(found, pos));
+        }
     }
 
-    public Item findById(String id) {
-        for (int pos = 0; pos < this.position; pos++) {
-            if (items[pos].getId().equals(id)) {
-                return items[pos];
+    public Optional<Item> findById(String id) {
+        for (Item item : this.getAll()) {
+            if (item.getId().equals(id)) {
+                return Optional.of(item);
             }
         }
-        return null;
+        return Optional.empty();
     }
 
     public String generateId() {
