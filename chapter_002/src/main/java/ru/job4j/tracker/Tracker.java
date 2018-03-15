@@ -20,6 +20,7 @@ public class Tracker {
         for (int pos = 0; pos < this.position; pos++) {
             if (items[pos].getId().equals(id)) {
                 items[pos] = item;
+                break;
             }
         }
     }
