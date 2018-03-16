@@ -64,6 +64,9 @@ public class StartUI {
                 case "6":
                     exit = "1";
                     break;
+                default:
+                    System.out.println("There are no such menu item!");
+                    break;
             }
         }
     }
