@@ -1,5 +1,7 @@
 package ru.job4j.strategy;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -7,12 +9,21 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class PaintTest {
+    private final PrintStream stdout = System.out;
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+
+    @Before
+    public void loadOutput() {
+        System.setOut(new PrintStream(this.out));
+    }
+
+    @After
+    public void backOutput() {
+        System.setOut(new PrintStream(this.stdout));
+    }
 
     @Test
     public void drawingSquare() {
-        PrintStream stdout = System.out;
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
         new Paint().draw(new Square());
         String expected = new StringBuilder()
                 .append("****")
@@ -21,14 +32,10 @@ public class PaintTest {
                 .append("****")
                 .toString();
         assertThat(new String(out.toByteArray()), is(expected));
-        System.setOut(stdout);
     }
 
     @Test
     public void drawingTriangle() {
-        PrintStream stdout = System.out;
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
         new Paint().draw(new Triangle());
         String expected = new StringBuilder()
                 .append("  *  ")
@@ -36,6 +43,5 @@ public class PaintTest {
                 .append("*****")
                 .toString();
         assertThat(new String(out.toByteArray()), is(expected));
-        System.setOut(stdout);
     }
 }
