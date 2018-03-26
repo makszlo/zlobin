@@ -11,10 +11,10 @@ public class SquareTest {
     public void drawTriangle() {
         Square square = new Square();
         String expected = new StringBuilder()
-                .append("****")
-                .append("*  *")
-                .append("*  *")
-                .append("****")
+                .append("****\n")
+                .append("*  *\n")
+                .append("*  *\n")
+                .append("****\n")
                 .toString();
         assertThat(square.draw(), is(expected));
     }

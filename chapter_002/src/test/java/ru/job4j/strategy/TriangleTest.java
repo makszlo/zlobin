@@ -11,9 +11,9 @@ public class TriangleTest {
     public void drawTriangle() {
         Triangle triangle = new Triangle();
         String expected = new StringBuilder()
-                .append("  *  ")
-                .append(" * * ")
-                .append("*****")
+                .append("  *  \n")
+                .append(" * * \n")
+                .append("*****\n")
                 .toString();
         assertThat(triangle.draw(), is(expected));
     }

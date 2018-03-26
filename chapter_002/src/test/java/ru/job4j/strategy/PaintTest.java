@@ -26,22 +26,22 @@ public class PaintTest {
     public void drawingSquare() {
         new Paint().draw(new Square());
         String expected = new StringBuilder()
-                .append("****")
-                .append("*  *")
-                .append("*  *")
-                .append("****")
+                .append("****\n")
+                .append("*  *\n")
+                .append("*  *\n")
+                .append("****\n")
                 .toString();
-        assertThat(new String(out.toByteArray()), is(expected));
+        assertThat(out.toString(), is(expected));
     }
 
     @Test
     public void drawingTriangle() {
         new Paint().draw(new Triangle());
         String expected = new StringBuilder()
-                .append("  *  ")
-                .append(" * * ")
-                .append("*****")
+                .append("  *  \n")
+                .append(" * * \n")
+                .append("*****\n")
                 .toString();
-        assertThat(new String(out.toByteArray()), is(expected));
+        assertThat(out.toString(), is(expected));
     }
 }

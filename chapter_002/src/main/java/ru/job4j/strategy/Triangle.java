@@ -4,9 +4,9 @@ public class Triangle implements Shape {
     @Override
     public String draw() {
         StringBuilder pic = new StringBuilder()
-                .append("  *  ")
-                .append(" * * ")
-                .append("*****");
+                .append("  *  \n")
+                .append(" * * \n")
+                .append("*****\n");
         return pic.toString();
     }
 }
