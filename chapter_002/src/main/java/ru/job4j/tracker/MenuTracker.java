@@ -2,6 +2,58 @@ package ru.job4j.tracker;
 
 import java.util.Optional;
 
+class FindItemById implements UserAction {
+    @Override
+    public int key() {
+        return 6;
+    }
+
+    @Override
+    public void execute(Input input, Tracker tracker) {
+        Optional<Item> item = tracker.findById(input.ask("Enter id:"));
+        if (item.isPresent()) {
+            System.out.println(item.get().getName() + " " + item.get().getDescription());
+        } else {
+            System.out.println("There is no such item!");
+        }
+        System.out.println();
+    }
+
+    @Override
+    public String info() {
+        return  String.format("%s. %s", this.key(), "Find item by id");
+    }
+}
+
+class FindItemByName implements UserAction {
+    @Override
+    public int key() {
+        return 7;
+    }
+
+    @Override
+    public void execute(Input input, Tracker tracker) {
+        Optional<Item[]> items = tracker.findByName(input.ask("Enter keyword"));
+        if (items.isPresent()) {
+            int pos = 0;
+            System.out.println("\nList of items:");
+            for (Item it : items.get()) {
+                System.out.println(++pos + ". " + it.getName() + " " + it.getId());
+            }
+        } else {
+            System.out.println("There are no such items!");
+        }
+        System.out.println();
+    }
+
+    @Override
+    public String info() {
+        return  String.format("%s. %s", this.key(), "Find items by name");
+    }
+}
+
+
+
 public class MenuTracker {
     private Input input;
     private Tracker tracker;
@@ -14,11 +66,11 @@ public class MenuTracker {
     }
 
     public void fillActions() {
-        this.actions[0] = new AddItem();
-        this.actions[1] = new ShowItems();
-        this.actions[2] = new ReplaceItem();
-        this.actions[3] = new EditItem();
-        this.actions[4] = new DeleteItem();
+        this.actions[0] = new MenuTracker.AddItem();
+        this.actions[1] = new MenuTracker.ShowItems();
+        this.actions[2] = this.new ReplaceItem();
+        this.actions[3] = this.new EditItem();
+        this.actions[4] = this.new DeleteItem();
         this.actions[5] = new FindItemById();
         this.actions[6] = new FindItemByName();
     }
@@ -44,7 +96,7 @@ public class MenuTracker {
         return this.actions.length + 1;
     }
 
-    private class AddItem implements UserAction {
+    private static class AddItem implements UserAction {
 
         @Override
         public int key() {
@@ -62,7 +114,7 @@ public class MenuTracker {
         }
     }
 
-    private class ShowItems implements UserAction {
+    private static class ShowItems implements UserAction {
 
         @Override
         public int key() {
@@ -136,55 +188,7 @@ public class MenuTracker {
         }
     }
 
-    private class FindItemById implements UserAction {
-        @Override
-        public int key() {
-            return 6;
-        }
 
-        @Override
-        public void execute(Input input, Tracker tracker) {
-            Optional<Item> item = tracker.findById(input.ask("Enter id:"));
-            if (item.isPresent()) {
-                System.out.println(item.get().getName() + " " + item.get().getDescription());
-            } else {
-                System.out.println("There is no such item!");
-            }
-            System.out.println();
-        }
-
-        @Override
-        public String info() {
-            return  String.format("%s. %s", this.key(), "Find item by id");
-        }
-    }
-
-    private class FindItemByName implements UserAction {
-        @Override
-        public int key() {
-            return 7;
-        }
-
-        @Override
-        public void execute(Input input, Tracker tracker) {
-            Optional<Item[]> items = tracker.findByName(input.ask("Enter keyword"));
-            if (items.isPresent()) {
-                int pos = 0;
-                System.out.println("\nList of items:");
-                for (Item it : items.get()) {
-                    System.out.println(++pos + ". " + it.getName() + " " + it.getId());
-                }
-            } else {
-                System.out.println("There are no such items!");
-            }
-            System.out.println();
-        }
-
-        @Override
-        public String info() {
-            return  String.format("%s. %s", this.key(), "Find items by name");
-        }
-    }
 
 
 }
