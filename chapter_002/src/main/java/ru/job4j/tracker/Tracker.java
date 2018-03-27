@@ -9,10 +9,23 @@ public class Tracker {
     private int position = 0;
     private static final Random RN = new Random();
 
-    public Item add(Item item) {
+    public void add(Item item) {
         item.setId(this.generateId());
         this.items[position++] = item;
-        return item;
+    }
+
+    public void edit(String id, String name, String desc) {
+        for (Item item : items) {
+            if (item.getId().equals(id)) {
+                if (!"".equals(name)) {
+                    item.setName(name);
+                }
+                if (!"".equals(desc)) {
+                    item.setName(desc);
+                }
+                break;
+            }
+        }
     }
 
     public void replace(String id, Item item) {

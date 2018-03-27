@@ -14,21 +14,39 @@ import static org.hamcrest.core.Is.is;
 public class StartUITest {
     private final PrintStream stdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    private String menu = "1. Add new item\r\n"
+            + "2. Show all items\r\n"
+            + "3. Replace item\r\n"
+            + "4. Edit item\r\n"
+            + "5. Delete item\r\n"
+            + "6. Find item by id\r\n"
+            + "7. Find items by name\r\n"
+            + "8. Exit program\r\n";
 
     @Test
     public void addTest() {
     Tracker tracker = new Tracker();
-    StabInput input = new StabInput(new String[]{"0", "test name", "description", "6"});
+    StabInput input = new StabInput(new String[]{"1", "test name", "description", "8"});
     new StartUI(input, tracker).init();
     assertThat(tracker.getAll()[0].getName(), is("test name"));
     }
 
     @Test
-        public void editTest() {
+    public void editTest() {
         Tracker tracker = new Tracker();
         Item test = new Item();
         tracker.add(test);
-        StabInput input = new StabInput(new String[]{"2", test.getId(), "test name", "description", "6"});
+        StabInput input = new StabInput(new String[]{"4", test.getId(), "test name", "", "8"});
+        new StartUI(input, tracker).init();
+        assertThat(tracker.getAll()[0].getName(), is("test name"));
+    }
+
+    @Test
+        public void replaceTest() {
+        Tracker tracker = new Tracker();
+        Item test = new Item();
+        tracker.add(test);
+        StabInput input = new StabInput(new String[]{"3", test.getId(), "test name", "description", "8"});
         new StartUI(input, tracker).init();
         assertThat(tracker.getAll()[0].getName(), is("test name"));
     }
@@ -39,7 +57,7 @@ public class StartUITest {
         Item test1 = new Item("test name_1", "description");
         Item test2 = new Item("test name_2", "description");
         tracker.add(test1);
-        StabInput input = new StabInput(new String[]{"3", test1.getId(), "6"});
+        StabInput input = new StabInput(new String[]{"5", test1.getId(), "8"});
         new StartUI(input, tracker).init();
         tracker.add(test2);
         assertThat(tracker.getAll()[0], is(test2));
@@ -60,17 +78,10 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item test1 = new Item("test name_1", "description");
         tracker.add(test1);
-        StabInput input = new StabInput(new String[]{"4", test1.getId(), "6"});
+        StabInput input = new StabInput(new String[]{"6", test1.getId(), "8"});
         new StartUI(input, tracker).init();
-        String menu = "0. Add new item\n"
-                + "1. Show all items\n"
-                + "2. Edit item\n"
-                + "3. Delete item\n"
-                + "4. Find item by id\n"
-                + "5. Find items by name\n"
-                + "6. Exit program\r\n";
-        String expected = menu + test1.getName() + " " + test1.getDescription() + "\r\n\r\n" + menu;
-        assertThat(expected, is(out.toString()));
+        String expected = this.menu + test1.getName() + " " + test1.getDescription() + "\r\n\r\n" + this.menu;
+        assertThat(this.out.toString(), is(expected));
     }
 
     @Test
@@ -86,17 +97,11 @@ public class StartUITest {
                 tracker.add(items[i]);
             }
         }
-        StabInput input = new StabInput(new String[]{"5", "test name_0", "6"});
+        StabInput input = new StabInput(new String[]{"7", "test name_0", "8"});
         new StartUI(input, tracker).init();
-        String menu = "0. Add new item\n"
-                + "1. Show all items\n"
-                + "2. Edit item\n"
-                + "3. Delete item\n"
-                + "4. Find item by id\n"
-                + "5. Find items by name\n"
-                + "6. Exit program\r\n";
+
         String answer = "\nList of items:\r\n" + "1. " + items[0].getName() + " " + items[0].getId() + "\r\n2. " + items[2].getName() + " " + items[2].getId() + "\r\n\r\n";
-        String expected = menu + answer + menu;
-        assertThat(expected, is(this.out.toString()));
+        String expected = this.menu + answer + this.menu;
+        assertThat(this.out.toString(), is(expected));
     }
 }

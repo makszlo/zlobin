@@ -20,11 +20,24 @@ public class TrackerTest {
         Item previous = new Item("test1", "testDescription");
         tracker.add(previous);
         Item next = new Item("test2", "testDescription2");
-        next.setId(previous.getId());
         tracker.replace(previous.getId(), next);
         assertThat(tracker.findById(previous.getId())
                 .get()
                 .getName(), is("test2"));
+    }
+
+    @Test
+    public void editTest() {
+        Tracker tracker = new Tracker();
+        Item item = new Item("test1", "testDescription");
+        tracker.add(item);
+        tracker.edit(item.getId(), "test2", "");
+        assertThat(tracker.findById(item.getId())
+                .get()
+                .getName(), is("test2"));
+        assertThat(tracker.findById(item.getId())
+                .get()
+                .getDescription(), is("testDescription"));
     }
 
     @Test
