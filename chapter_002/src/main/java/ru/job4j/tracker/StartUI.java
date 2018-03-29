@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 public class StartUI {
+    private  int[] range;
     private Input input;
     private Tracker tracker;
 
@@ -10,7 +11,7 @@ public class StartUI {
 
     public StartUI() {
         this.tracker = new Tracker();
-        this.input = new ConsoleInput();
+        this.input = new ValidateInput();
     }
 
     public StartUI(Input input) {
@@ -27,9 +28,10 @@ public class StartUI {
         String exit = "0";
         MenuTracker mt = new MenuTracker(this.input, this.tracker);
         mt.fillActions();
+        this.range = mt.getRange();
         do {
             mt.showActions();
-            int answer = Integer.valueOf(input.ask("Select:"));
+            int answer = input.ask("Select:", mt.getRange());
                 if (answer != mt.exitButton()) {
                     mt.select(answer - 1);
                 } else {

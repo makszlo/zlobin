@@ -8,4 +8,20 @@ public class ConsoleInput implements Input {
         System.out.println(question);
         return scanner.nextLine();
     }
+
+    public int ask(String question, int[] range) {
+        int key = Integer.valueOf(this.ask("Select:"));
+        boolean exist = false;
+        for (int rangeKey : range) {
+            if (rangeKey == key) {
+                exist = true;
+                break;
+            }
+        }
+        if (exist) {
+            return  key;
+        } else {
+            throw new MenuOutOfRange("Out of menu range.");
+        }
+    }
 }

@@ -10,4 +10,7 @@ public class StabInput implements Input {
     public String ask(String question) {
         return this.keywords[this.position++];
     }
+    public int ask(String question, int[] range) {
+        throw new RuntimeException("Unsupported exception");
+    }
 }

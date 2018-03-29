@@ -76,7 +76,6 @@ public class MenuTracker {
     }
 
     public void select(int key) {
-
         if (key < actions.length && key >= 0) {
             this.actions[key].execute(this.input, this.tracker);
         } else {
@@ -90,6 +89,15 @@ public class MenuTracker {
             System.out.println(action.info());
         }
         System.out.println(pos + ". Exit program");
+    }
+
+    public int[] getRange() {
+        int range[] = new int[this.actions.length + 1];
+        for (int i = 0; i < this.actions.length; i++) {
+            range[i] = actions[i].key();
+        }
+        range[this.actions.length] = this.actions.length + 1;
+        return range;
     }
 
     public int exitButton() {
