@@ -92,7 +92,7 @@ public class MenuTracker {
     }
 
     public int[] getRange() {
-        int range[] = new int[this.actions.length + 1];
+        int[] range = new int[this.actions.length + 1];
         for (int i = 0; i < this.actions.length; i++) {
             range[i] = actions[i].key();
         }

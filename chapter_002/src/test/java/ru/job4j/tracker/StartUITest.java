@@ -26,7 +26,7 @@ public class StartUITest {
     @Test
     public void addTest() {
     Tracker tracker = new Tracker();
-    StabInput input = new StabInput(new String[]{"1", "test name", "description", "8"});
+    ValidateInput input = new ValidateInput(new StabInput(new String[]{"1", "test name", "description", "8"}));
     new StartUI(input, tracker).init();
     assertThat(tracker.getAll()[0].getName(), is("test name"));
     }
@@ -36,7 +36,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item test = new Item();
         tracker.add(test);
-        StabInput input = new StabInput(new String[]{"4", test.getId(), "test name", "", "8"});
+        ValidateInput input = new ValidateInput(new StabInput(new String[]{"4", test.getId(), "test name", "", "8"}));
         new StartUI(input, tracker).init();
         assertThat(tracker.getAll()[0].getName(), is("test name"));
     }
@@ -46,7 +46,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item test = new Item();
         tracker.add(test);
-        StabInput input = new StabInput(new String[]{"3", test.getId(), "test name", "description", "8"});
+        ValidateInput input = new ValidateInput(new StabInput(new String[]{"3", test.getId(), "test name", "description", "8"}));
         new StartUI(input, tracker).init();
         assertThat(tracker.getAll()[0].getName(), is("test name"));
     }
@@ -57,7 +57,7 @@ public class StartUITest {
         Item test1 = new Item("test name_1", "description");
         Item test2 = new Item("test name_2", "description");
         tracker.add(test1);
-        StabInput input = new StabInput(new String[]{"5", test1.getId(), "8"});
+        ValidateInput input = new ValidateInput(new StabInput(new String[]{"5", test1.getId(), "8"}));
         new StartUI(input, tracker).init();
         tracker.add(test2);
         assertThat(tracker.getAll()[0], is(test2));
@@ -78,7 +78,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item test1 = new Item("test name_1", "description");
         tracker.add(test1);
-        StabInput input = new StabInput(new String[]{"6", test1.getId(), "8"});
+        ValidateInput input = new ValidateInput(new StabInput(new String[]{"6", test1.getId(), "8"}));
         new StartUI(input, tracker).init();
         String expected = this.menu + test1.getName() + " " + test1.getDescription() + "\r\n\r\n" + this.menu;
         assertThat(this.out.toString(), is(expected));
@@ -97,9 +97,8 @@ public class StartUITest {
                 tracker.add(items[i]);
             }
         }
-        StabInput input = new StabInput(new String[]{"7", "test name_0", "8"});
+        ValidateInput input = new ValidateInput(new StabInput(new String[]{"7", "test name_0", "8"}));
         new StartUI(input, tracker).init();
-
         String answer = "\nList of items:\r\n" + "1. " + items[0].getName() + " " + items[0].getId() + "\r\n2. " + items[2].getName() + " " + items[2].getId() + "\r\n\r\n";
         String expected = this.menu + answer + this.menu;
         assertThat(this.out.toString(), is(expected));

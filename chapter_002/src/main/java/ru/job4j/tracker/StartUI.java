@@ -11,7 +11,7 @@ public class StartUI {
 
     public StartUI() {
         this.tracker = new Tracker();
-        this.input = new ValidateInput();
+        this.input = new ValidateInput(new ConsoleInput());
     }
 
     public StartUI(Input input) {

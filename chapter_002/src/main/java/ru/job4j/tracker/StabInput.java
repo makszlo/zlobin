@@ -11,6 +11,18 @@ public class StabInput implements Input {
         return this.keywords[this.position++];
     }
     public int ask(String question, int[] range) {
-        throw new RuntimeException("Unsupported exception");
+        int key = Integer.valueOf(this.ask(""));
+        boolean exist = false;
+        for (int rangeKey : range) {
+            if (rangeKey == key) {
+                exist = true;
+                break;
+            }
+        }
+        if (exist) {
+            return  key;
+        } else {
+            throw new MenuOutOfRange("Out of menu range.");
+        }
     }
 }
