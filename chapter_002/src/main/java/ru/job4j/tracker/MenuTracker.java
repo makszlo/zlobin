@@ -2,10 +2,10 @@ package ru.job4j.tracker;
 
 import java.util.Optional;
 
-class FindItemById implements UserAction {
-    @Override
-    public int key() {
-        return 6;
+class FindItemById extends BaseAction {
+
+    public FindItemById(String info, int key) {
+        super(info, key);
     }
 
     @Override
@@ -18,17 +18,12 @@ class FindItemById implements UserAction {
         }
         System.out.println();
     }
-
-    @Override
-    public String info() {
-        return  String.format("%s. %s", this.key(), "Find item by id");
-    }
 }
 
-class FindItemByName implements UserAction {
-    @Override
-    public int key() {
-        return 7;
+class FindItemByName extends BaseAction {
+
+    public FindItemByName(String info, int key) {
+        super(info, key);
     }
 
     @Override
@@ -44,11 +39,6 @@ class FindItemByName implements UserAction {
             System.out.println("There are no such items!");
         }
         System.out.println();
-    }
-
-    @Override
-    public String info() {
-        return  String.format("%s. %s", this.key(), "Find items by name");
     }
 }
 
@@ -66,13 +56,13 @@ public class MenuTracker {
     }
 
     public void fillActions() {
-        this.actions[0] = new MenuTracker.AddItem();
-        this.actions[1] = new MenuTracker.ShowItems();
-        this.actions[2] = this.new ReplaceItem();
-        this.actions[3] = this.new EditItem();
-        this.actions[4] = this.new DeleteItem();
-        this.actions[5] = new FindItemById();
-        this.actions[6] = new FindItemByName();
+        this.actions[0] = new MenuTracker.AddItem("Add new item", 1);
+        this.actions[1] = new MenuTracker.ShowItems("Show all items", 2);
+        this.actions[2] = this.new ReplaceItem("Replace item", 3);
+        this.actions[3] = this.new EditItem("Edit item", 4);
+        this.actions[4] = this.new DeleteItem("Delete item", 5);
+        this.actions[5] = new FindItemById("Find item by id", 6);
+        this.actions[6] = new FindItemByName("Find items by name", 7);
     }
 
     public void select(int key) {
@@ -104,29 +94,22 @@ public class MenuTracker {
         return this.actions.length + 1;
     }
 
-    private static class AddItem implements UserAction {
+    private static class AddItem extends BaseAction {
 
-        @Override
-        public int key() {
-            return 1;
+        public AddItem(String info, int key) {
+            super(info, key);
         }
 
         @Override
         public void execute(Input input, Tracker tracker) {
             tracker.add(new Item(input.ask("Enter item name:"), input.ask("Enter description of new item:")));
         }
-
-        @Override
-        public String info() {
-            return  String.format("%s. %s", this.key(), "Add new item");
-        }
     }
 
-    private static class ShowItems implements UserAction {
+    private static class ShowItems extends BaseAction {
 
-        @Override
-        public int key() {
-            return 2;
+        public ShowItems(String info, int key) {
+            super(info, key);
         }
 
         @Override
@@ -138,51 +121,36 @@ public class MenuTracker {
             }
             System.out.println();
         }
-
-        @Override
-        public String info() {
-            return  String.format("%s. %s", this.key(), "Show all items");
-        }
     }
 
-    private class ReplaceItem implements  UserAction {
-        @Override
-        public int key() {
-            return 3;
+    private class ReplaceItem extends BaseAction {
+
+        public ReplaceItem(String info, int key) {
+            super(info, key);
         }
 
         @Override
         public void execute(Input input, Tracker tracker) {
             tracker.replace(input.ask("Enter item id:"), new Item(input.ask("Enter new item's name:"), input.ask("Enter description of new item:")));
         }
-
-        @Override
-        public String info() {
-            return  String.format("%s. %s", this.key(), "Replace item");
-        }
     }
 
-    private class EditItem implements  UserAction {
-        @Override
-        public int key() {
-            return 4;
+    private class EditItem extends BaseAction {
+
+        public EditItem(String info, int key) {
+            super(info, key);
         }
 
         @Override
         public void execute(Input input, Tracker tracker) {
             tracker.edit(input.ask("Enter item id:"), input.ask("Enter new item's name (leave blank if it not changed):"), input.ask("Enter description of new item (leave blank if it not changed):"));
         }
-
-        @Override
-        public String info() {
-            return  String.format("%s. %s", this.key(), "Edit item");
-        }
     }
 
-    private class DeleteItem implements UserAction {
-        @Override
-        public int key() {
-            return 5;
+    private class DeleteItem extends BaseAction {
+
+        public DeleteItem(String info, int key) {
+            super(info, key);
         }
 
         @Override
@@ -190,13 +158,5 @@ public class MenuTracker {
             tracker.delete(input.ask("Enter item id:"));
         }
 
-        @Override
-        public String info() {
-            return  String.format("%s. %s", this.key(), "Delete item");
-        }
     }
-
-
-
-
 }

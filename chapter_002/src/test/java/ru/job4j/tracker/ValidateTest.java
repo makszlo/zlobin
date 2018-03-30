@@ -21,7 +21,6 @@ public class ValidateTest {
             + "6. Find item by id\r\n"
             + "7. Find items by name\r\n"
             + "8. Exit program\r\n";
-    private String moexc = "Please enter valid data again\r\n";
 
     @Before
     public void loadOutput() {
@@ -34,7 +33,7 @@ public class ValidateTest {
     }
 
     @Test
-    public void MenuOutOfRangeTest() {
+    public void menuOutOfRangeTest() {
         Tracker tracker = new Tracker();
         ValidateInput input = new ValidateInput(new StabInput(new String[]{"-1", "8"}));
         new StartUI(input, tracker).init();
@@ -43,7 +42,7 @@ public class ValidateTest {
     }
 
     @Test
-    public void NumberFormatException() {
+    public void numberFormatException() {
         Tracker tracker = new Tracker();
         ValidateInput input = new ValidateInput(new StabInput(new String[]{"s", "8"}));
         new StartUI(input, tracker).init();
