@@ -42,7 +42,7 @@ public class BoardTest {
         board.move(source, dest);
         assertThat(board.checkCell(new Cell(8,1)).get(), is(0));
     }
-    @Test
+    @Test(expected = OccupiedWayException.class)
     public void moveWithObstacleTest() throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
         Board board = new Board();
         Cell source = new Cell(1,1);
@@ -51,10 +51,6 @@ public class BoardTest {
         Bishop obstacle = new Bishop(dest);
         board.add(bishop);
         board.add(obstacle);
-        try {
-            board.move(source, dest);
-        } catch (OccupiedWayException owe) {
-            assertThat(owe.getMessage(), is("На пути находится фигура"));
-        }
+        board.move(source, dest);
     }
 }

@@ -24,8 +24,7 @@ public class Board {
     public boolean move(Cell source, Cell dest) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
         Optional<Integer> index = checkCell(source);
         if (index.isPresent()) {
-            Cell[] way = this.figures[index.get()].way(dest)
-                    .get();
+            Cell[] way = this.figures[index.get()].way(dest);
             for (int i = 1; i < way.length; i++) {
                 if (checkCell(way[i]).isPresent()) {
                     throw new OccupiedWayException("На пути находится фигура");
