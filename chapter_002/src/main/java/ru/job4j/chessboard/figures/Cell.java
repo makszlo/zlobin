@@ -1,8 +1,8 @@
-package ru.job4j.ChessBoard;
+package ru.job4j.chessboard.figures;
 
 public class Cell {
-    public int x;
-    public int y;
+    public final int x;
+    public final int y;
 
     public Cell(int x, int y) {
         this.x = x;

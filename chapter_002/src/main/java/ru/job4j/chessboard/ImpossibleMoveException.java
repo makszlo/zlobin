@@ -1,4 +1,4 @@
-package ru.job4j.ChessBoard;
+package ru.job4j.chessboard;
 
 public class ImpossibleMoveException extends Exception {
     public ImpossibleMoveException(String msg) {

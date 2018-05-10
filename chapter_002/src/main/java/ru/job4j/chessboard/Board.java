@@ -1,4 +1,9 @@
-package ru.job4j.ChessBoard;
+package ru.job4j.chessboard;
+
+import ru.job4j.chessboard.figures.Cell;
+import ru.job4j.chessboard.figures.Figure;
+import ru.job4j.chessboard.figures.black.BlackKnight;
+import ru.job4j.chessboard.figures.white.WhiteKnight;
 
 import java.util.Optional;
 
@@ -10,23 +15,18 @@ public class Board {
         this.figures[position++] = figure;
     }
 
-    public static void main(String[] args) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
-        Board board = new Board();
-        Cell source = new Cell(1,1);
-        Cell dest = new Cell(8,1);
-        Bishop bishop = new Bishop(source);
-        Bishop obstacle = new Bishop(dest);
-        board.add(bishop);
-        board.add(obstacle);
-        board.move(source, dest);
-    }
-
     public boolean move(Cell source, Cell dest) throws ImpossibleMoveException, OccupiedWayException, FigureNotFoundException {
         Optional<Integer> index = checkCell(source);
         if (index.isPresent()) {
             Cell[] way = this.figures[index.get()].way(dest);
-            for (int i = 1; i < way.length; i++) {
-                if (checkCell(way[i]).isPresent()) {
+            if (!(this.figures[index.get()] instanceof BlackKnight || this.figures[index.get()] instanceof WhiteKnight)) {
+                for (int i = 1; i < way.length; i++) {
+                    if (checkCell(way[i]).isPresent()) {
+                        throw new OccupiedWayException("На пути находится фигура");
+                    }
+                }
+            } else {
+                if (checkCell(way[way.length - 1]).isPresent()) {
                     throw new OccupiedWayException("На пути находится фигура");
                 }
             }
@@ -35,6 +35,13 @@ public class Board {
         } else {
             throw new FigureNotFoundException("В данной клетке нет фигуры");
         }
+    }
+
+    public void clean() {
+        for (int position = 0; position != this.figures.length; position++) {
+            this.figures[position] = null;
+        }
+        this.position = 0;
     }
 
     public Optional<Integer> checkCell(Cell source) {
