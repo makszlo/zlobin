@@ -3,6 +3,10 @@ package ru.job4j.chessboard.figures.white;
 import ru.job4j.chessboard.figures.Cell;
 import ru.job4j.chessboard.figures.Figure;
 
+/**
+ * Реализация белой королевы
+ * @author Zlobin Maxim
+ */
 public class WhiteQueen extends Figure {
 
     public WhiteQueen(Cell position) {

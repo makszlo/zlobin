@@ -3,6 +3,10 @@ package ru.job4j.chessboard.figures.black;
 import ru.job4j.chessboard.figures.Cell;
 import ru.job4j.chessboard.figures.Figure;
 
+/**
+ * Реализация черной ладььи
+ * @author Zlobin Maxim
+ */
 public class BlackRook extends Figure {
 
     public BlackRook(Cell position) {

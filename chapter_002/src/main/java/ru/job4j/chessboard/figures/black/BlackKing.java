@@ -3,6 +3,10 @@ package ru.job4j.chessboard.figures.black;
 import ru.job4j.chessboard.figures.Cell;
 import ru.job4j.chessboard.figures.Figure;
 
+/**
+ * Реализация черного короля
+ * @author Zlobin Maxim
+ */
 public class BlackKing extends Figure {
 
     public BlackKing(Cell position) {

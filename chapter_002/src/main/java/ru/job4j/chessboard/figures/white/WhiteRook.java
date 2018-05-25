@@ -3,6 +3,10 @@ package ru.job4j.chessboard.figures.white;
 import ru.job4j.chessboard.figures.Cell;
 import ru.job4j.chessboard.figures.Figure;
 
+/**
+ * Реализация белой ладьи
+ * @author Zlobin Maxim
+ */
 public class WhiteRook extends Figure {
 
     public WhiteRook(Cell position) {

@@ -3,6 +3,10 @@ package ru.job4j.chessboard.figures.white;
 import ru.job4j.chessboard.figures.Cell;
 import ru.job4j.chessboard.figures.Figure;
 
+/**
+ * Реализация белого коня
+ * @author Zlobin Maxim
+ */
 public class WhiteKnight extends Figure {
     public WhiteKnight(Cell position) {
         super(position, new int[] {-153, -116, -63, -26, 26, 63, 116, 153}, 4);
