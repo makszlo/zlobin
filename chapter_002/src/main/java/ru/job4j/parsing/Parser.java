@@ -2,10 +2,15 @@ package ru.job4j.parsing;
 
 /**
  * Класс для парсера скобочных последовательности
+ * @author Zlobin Maxim
+ * @version 1.0
  */
 public class Parser {
+    /** Скобочная последовательность**/
     private char[] sentence;
-
+    /** Используемые скобки **/
+    private final static char[] LEFT = {'(', '[', '{'};
+    private final static char[] RIGHT = {')', ']', '}'};
     /**
      *
      * @param value - скобочная последовательности с дополнительными символами
@@ -19,22 +24,30 @@ public class Parser {
      * @return - верна ли скобочная последовательность
      */
     public boolean validate() {
-        char[] tmp = new char[this.sentence.length];
-        int pos = -1;
+        CharStack stack = new CharStack(this.sentence.length);
+        char last;
         for (char current : this.sentence) {
-            if (current == 40 || current == 91 || current == 123) {
-                tmp[++pos] = current;
-            } else if (current == 41 || current == 93 || current == 125) {
-                if (current - tmp[pos] == 1) {
-                    tmp[pos--] = 0;
-                } else if (current - tmp[pos] == 2) {
-                    tmp[pos--] = 0;
-                } else {
+            if (current == LEFT[0] || current == LEFT[1] || current == LEFT[2]) {
+                stack.push(current);
+            } else if (current == RIGHT[0] || current == RIGHT[1] || current == RIGHT[2]) {
+                try {
+                    last = stack.pop();
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    return false;
+                }
+                if (!(current == RIGHT[0] && last == LEFT[0]
+                        || current == RIGHT[1] && last == LEFT[1]
+                        || current == RIGHT[2] && last == LEFT[2])) {
                     return false;
                 }
             }
         }
-        return pos == -1;
+        try {
+            stack.pop();
+            return false;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return true;
+        }
     }
 
     /**
@@ -52,9 +65,9 @@ public class Parser {
         while (lastBracket != 0) {
             lastBracket = 0;
             for (int i = 0; i < this.sentence.length; i++) {
-                if (this.sentence[i] == 40 || this.sentence[i] == 91 || this.sentence[i] == 123) {
+                if (this.sentence[i] == LEFT[0] || this.sentence[i] == LEFT[1] || this.sentence[i] == LEFT[3]) {
                     lastBracket = i;
-                } else if (this.sentence[i] == 41 || this.sentence[i] == 93 || this.sentence[i] == 125) {
+                } else if (this.sentence[i] == RIGHT[0] || this.sentence[i] == RIGHT[1] || this.sentence[i] == RIGHT[2]) {
                     tmp = this.sentence[i] - this.sentence[lastBracket];
                     if (tmp == 1 || tmp == 2) {
                         result.append(String.format("%-10s%-10s%-10s%-9c%c%n", counter++ + ".", lastBracket, i, this.sentence[lastBracket], this.sentence[i]));

@@ -7,6 +7,8 @@ import static org.hamcrest.core.Is.is;
 
 /**
  * Класс для тестирования парсера скобочной последовательности
+ * @author Zlobin Maxim
+ * @version 1.0
  */
 public class ParserTest {
     /**
@@ -27,5 +29,15 @@ public class ParserTest {
     public void validPhrase() throws NotValidPhrase {
         Parser parser = new Parser("(){}[({[]}{(())})]");
         assertThat(parser.validate(), is(true));
+    }
+
+    /**
+     * Тест невалидной скобочной последовательности
+     * @throws NotValidPhrase
+     */
+    @Test(expected = NotValidPhrase.class)
+    public void emptyStackTest() throws NotValidPhrase {
+        Parser parser = new Parser("dsfds]{324}5345}");
+        parser.parse();
     }
 }
