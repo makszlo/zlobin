@@ -6,18 +6,13 @@ public class ConvertList2Array {
     public int[][] toArray(List<Integer> list, int rows) {
         int ceils = (int) Math.ceil((double) list.size() / (double) rows);
         int[][] array = new int[rows][ceils];
-        int row = 0;
-        int ceil = 0;
-        for (int current : list) {
-            array[row][ceil] = current;
-            ceil++;
-            if (ceil >= ceils) {
-                ceil = 0;
-                row++;
+        int counter = 0;
+        for (int[] row : array) {
+            for(int i = 0; i < ceils; i++) {
+                if (counter < list.size()) {
+                    row[i] = list.get(counter++);
+                }
             }
-        }
-        for (; ceil < ceils; ceil++) {
-            array[row][ceil] = 0;
         }
         return array;
     }
