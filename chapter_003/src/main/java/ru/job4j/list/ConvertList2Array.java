@@ -1,5 +1,6 @@
 package ru.job4j.list;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,5 +28,20 @@ public class ConvertList2Array {
             }
         }
         return array;
+    }
+
+    /**
+     * Метод конвертирующии несколько масссивов в ArrayList
+     * @param list - массивы для обработки
+     * @return - ArrayList из массивов
+     */
+    public List<Integer> convert(List<int[]> list) {
+        List<Integer> result = new ArrayList<Integer>();
+        for (int[] array : list) {
+            for (int current : array) {
+                result.add(current);
+            }
+        }
+        return result;
     }
 }
