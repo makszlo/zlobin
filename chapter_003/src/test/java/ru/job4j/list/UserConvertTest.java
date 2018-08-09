@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThat;
 public class UserConvertTest {
 
     @Test
-    public void ListToHMapTest(){
+    public void listToHMapTest() {
         UserConvert userConvert = new UserConvert();
         User user1 = new User(0, "Max", "Voronezh");
         List<User> list = new ArrayList<User>();
