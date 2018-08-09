@@ -1,17 +1,14 @@
 package ru.job4j.tracker;
 
-import java.util.Arrays;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 public class Tracker {
-    private final Item[] items = new Item[100];
-    private int position = 0;
+    private final List<Item> items = new ArrayList<Item>();
     private static final Random RN = new Random();
 
     public void add(Item item) {
         item.setId(this.generateId());
-        this.items[position++] = item;
+        this.items.add(item);
     }
 
     public void edit(String id, String name, String desc) {
@@ -30,30 +27,28 @@ public class Tracker {
 
     public void replace(String id, Item item) {
         item.setId(id);
-        for (int pos = 0; pos < this.position; pos++) {
-            if (items[pos].getId().equals(id)) {
-                items[pos] = item;
+        for (int pos = 0; pos < this.items.size(); pos++) {
+            if (items.get(pos).getId().equals(id)) {
+                items.set(pos, item);
                 break;
             }
         }
     }
 
     public void delete(String id) {
-        for (int pos = 0; pos < this.position; pos++) {
-            if (items[pos].getId().equals(id)) {
-                System.arraycopy(this.items, pos + 1, this.items, pos, this.items.length  - pos - 1);
-                break;
+        for (int pos = 0; pos < this.items.size(); pos++) {
+            if (items.get(pos).getId().equals(id)) {
+               items.remove(pos);
             }
         }
-        position--;
     }
 
-    public Item[] getAll() {
-        return Arrays.copyOf(items, position);
+    public List<Item> getAll() {
+        return this.items;
     }
 
     public Optional<Item[]> findByName(String key) {
-        Item[] found = new Item[position];
+        Item[] found = new Item[this.items.size()];
         int pos = 0;
         for (Item item : this.getAll()) {
             if (item.getName().equals(key)) {

@@ -28,7 +28,7 @@ public class StartUITest {
     Tracker tracker = new Tracker();
     ValidateInput input = new ValidateInput(new StabInput(new String[]{"1", "test name", "description", "8"}));
     new StartUI(input, tracker).init();
-    assertThat(tracker.getAll()[0].getName(), is("test name"));
+    assertThat(tracker.getAll().get(0).getName(), is("test name"));
     }
 
     @Test
@@ -38,7 +38,7 @@ public class StartUITest {
         tracker.add(test);
         ValidateInput input = new ValidateInput(new StabInput(new String[]{"4", test.getId(), "test name", "", "8"}));
         new StartUI(input, tracker).init();
-        assertThat(tracker.getAll()[0].getName(), is("test name"));
+        assertThat(tracker.getAll().get(0).getName(), is("test name"));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class StartUITest {
         tracker.add(test);
         ValidateInput input = new ValidateInput(new StabInput(new String[]{"3", test.getId(), "test name", "description", "8"}));
         new StartUI(input, tracker).init();
-        assertThat(tracker.getAll()[0].getName(), is("test name"));
+        assertThat(tracker.getAll().get(0).getName(), is("test name"));
     }
 
     @Test
@@ -60,7 +60,7 @@ public class StartUITest {
         ValidateInput input = new ValidateInput(new StabInput(new String[]{"5", test1.getId(), "8"}));
         new StartUI(input, tracker).init();
         tracker.add(test2);
-        assertThat(tracker.getAll()[0], is(test2));
+        assertThat(tracker.getAll().get(0), is(test2));
     }
 
     @Before
