@@ -4,6 +4,7 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import java.util.Optional;
 import static org.junit.Assert.assertThat;
+import java.util.List;
 
 public class TrackerTest {
     @Test
@@ -61,9 +62,9 @@ public class TrackerTest {
         for (int i = 0; i < amount; i++) {
             tracker.add(items[i]);
         }
-        Optional<Item[]> result = tracker.findByName("test");
-        for (int i = 0; i < result.get().length; i++) {
-            assertThat(result.get()[i], is(items[2 * i + 1]));
+        Optional<List<Item>> result = tracker.findByName("test");
+        for (int i = 0; i < result.get().size(); i++) {
+            assertThat(result.get().get(i), is(items[2 * i + 1]));
         }
     }
 
@@ -82,7 +83,7 @@ public class TrackerTest {
         for (int i = 0; i < amount; i++) {
             tracker.add(items[i]);
         }
-        Optional<Item[]> result = tracker.findByName("testing");
+        Optional<List<Item>> result = tracker.findByName("testing");
         assertThat(result, is(Optional.empty()));
     }
 

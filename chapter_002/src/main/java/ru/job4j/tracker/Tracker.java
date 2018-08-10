@@ -1,6 +1,9 @@
 package ru.job4j.tracker;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Random;
+import java.util.Optional;
 
 public class Tracker {
     private final List<Item> items = new ArrayList<Item>();
@@ -47,18 +50,17 @@ public class Tracker {
         return this.items;
     }
 
-    public Optional<Item[]> findByName(String key) {
-        Item[] found = new Item[this.items.size()];
-        int pos = 0;
+    public Optional<List<Item>> findByName(String key) {
+        List<Item> found = new ArrayList<Item>();
         for (Item item : this.getAll()) {
             if (item.getName().equals(key)) {
-                found[pos++] = item;
+                found.add(item);
             }
         }
-        if (pos == 0) {
+        if (found.isEmpty()) {
             return Optional.empty();
         } else {
-            return Optional.of(Arrays.copyOf(found, pos));
+            return Optional.of(found);
         }
     }
 

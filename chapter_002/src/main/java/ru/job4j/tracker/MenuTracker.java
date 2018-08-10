@@ -1,6 +1,7 @@
 package ru.job4j.tracker;
 
 import java.util.Optional;
+import java.util.List;
 
 class FindItemById extends BaseAction {
 
@@ -28,7 +29,7 @@ class FindItemByName extends BaseAction {
 
     @Override
     public void execute(Input input, Tracker tracker) {
-        Optional<Item[]> items = tracker.findByName(input.ask("Enter keyword"));
+        Optional<List<Item>> items = tracker.findByName(input.ask("Enter keyword"));
         if (items.isPresent()) {
             int pos = 0;
             System.out.println("\nList of items:");
