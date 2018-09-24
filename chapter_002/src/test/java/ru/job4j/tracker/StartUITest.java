@@ -14,14 +14,14 @@ import static org.hamcrest.core.Is.is;
 public class StartUITest {
     private final PrintStream stdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
-    private String menu = "1. Add new item\r\n"
-            + "2. Show all items\r\n"
-            + "3. Replace item\r\n"
-            + "4. Edit item\r\n"
-            + "5. Delete item\r\n"
-            + "6. Find item by id\r\n"
-            + "7. Find items by name\r\n"
-            + "8. Exit program\r\n";
+    private String menu = "1. Add new item" + System.lineSeparator()
+            + "2. Show all items" + System.lineSeparator()
+            + "3. Replace item" + System.lineSeparator()
+            + "4. Edit item" + System.lineSeparator()
+            + "5. Delete item" + System.lineSeparator()
+            + "6. Find item by id" + System.lineSeparator()
+            + "7. Find items by name" + System.lineSeparator()
+            + "8. Exit program" + System.lineSeparator();
 
     @Test
     public void addTest() {
@@ -80,7 +80,7 @@ public class StartUITest {
         tracker.add(test1);
         ValidateInput input = new ValidateInput(new StabInput(new String[]{"6", test1.getId(), "8"}));
         new StartUI(input, tracker).init();
-        String expected = this.menu + test1.getName() + " " + test1.getDescription() + "\r\n\r\n" + this.menu;
+        String expected = this.menu + test1.getName() + " " + test1.getDescription() + System.lineSeparator() + System.lineSeparator() + this.menu;
         assertThat(this.out.toString(), is(expected));
     }
 
@@ -99,7 +99,8 @@ public class StartUITest {
         }
         ValidateInput input = new ValidateInput(new StabInput(new String[]{"7", "test name_0", "8"}));
         new StartUI(input, tracker).init();
-        String answer = "\nList of items:\r\n" + "1. " + items[0].getName() + " " + items[0].getId() + "\r\n2. " + items[2].getName() + " " + items[2].getId() + "\r\n\r\n";
+        String answer = System.lineSeparator() + "List of items:" + System.lineSeparator() + "1. "
+                + items[0].getName() + " " + items[0].getId() + System.lineSeparator() + "2. " + items[2].getName() + " " + items[2].getId() + System.lineSeparator() + System.lineSeparator();
         String expected = this.menu + answer + this.menu;
         assertThat(this.out.toString(), is(expected));
     }

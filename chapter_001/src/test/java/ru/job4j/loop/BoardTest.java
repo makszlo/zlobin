@@ -17,8 +17,7 @@ public class BoardTest {
     public void boardThreeXThree() {
         Board brd = new Board();
         String result = brd.paint(3, 3);
-        String newLine = System.getProperty("line.separator");
-        String expected = String.format("X X%s X %sX X%s", newLine, newLine, newLine);
+        String expected = String.format("X X%s X %sX X%s", System.lineSeparator(), System.lineSeparator(), System.lineSeparator());
         assertThat(result, is(expected));
     }
     /**

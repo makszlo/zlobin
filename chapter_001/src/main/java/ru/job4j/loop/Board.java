@@ -22,7 +22,7 @@ public class Board {
                     tmp.append(" ");
                 }
             }
-            tmp.append("\r\n");
+            tmp.append(System.lineSeparator());
         }
         return tmp.toString();
     }

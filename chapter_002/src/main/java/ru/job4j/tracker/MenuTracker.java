@@ -32,7 +32,7 @@ class FindItemByName extends BaseAction {
         Optional<List<Item>> items = tracker.findByName(input.ask("Enter keyword"));
         if (items.isPresent()) {
             int pos = 0;
-            System.out.println("\nList of items:");
+            System.out.println(System.lineSeparator() + "List of items:");
             for (Item it : items.get()) {
                 System.out.println(++pos + ". " + it.getName() + " " + it.getId());
             }
@@ -115,7 +115,7 @@ public class MenuTracker {
 
         @Override
         public void execute(Input input, Tracker tracker) {
-            System.out.println("\nList of items:\n");
+            System.out.println(System.lineSeparator() + "List of items:" + System.lineSeparator());
             int pos = 0;
             for (Item item : tracker.getAll()) {
                 System.out.println(++pos + ". " + item.getName() + " " + item.getId());
